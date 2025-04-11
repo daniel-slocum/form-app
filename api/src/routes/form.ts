@@ -61,7 +61,7 @@ async function formRoutes(app: FastifyInstance) {
 
       try {
         const newForm = await FormService.createForm(name, fields)
-        reply.status(201).send(newForm)
+        reply.status(StatusCodes.created).send(newForm)
       } catch (err: any) {
         log.error({ err }, err.message)
         throw new ApiError('failed to create form', StatusCodes.badRequest)

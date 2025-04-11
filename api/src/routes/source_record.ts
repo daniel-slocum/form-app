@@ -31,7 +31,7 @@ async function sourceRecordRoutes(app: FastifyInstance) {
     async handler(req, reply) {
       const { params } = req
       const { id } = params
-      log.debug('get form by id')
+      log.debug('get source record by id')
 
       try {
         const sourceRecord = await SourceRecordService.getSourceRecordById(id)
@@ -60,17 +60,20 @@ async function sourceRecordRoutes(app: FastifyInstance) {
     async handler(req, reply) {
       const { body } = req
       const { formId, sourceData } = body
-      log.debug('create new form')
+      log.debug('create new source record')
 
       try {
         const newSourceRecord = await SourceRecordService.createSourceRecord(
           formId,
           sourceData
         )
-        reply.status(201).send(newSourceRecord)
+        reply.status(StatusCodes.created).send(newSourceRecord)
       } catch (err: any) {
         log.error({ err }, err.message)
-        throw new ApiError('failed to create form', StatusCodes.badRequest)
+        throw new ApiError(
+          'failed to create source record',
+          StatusCodes.badRequest
+        )
       }
     },
   })

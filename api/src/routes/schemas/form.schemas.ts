@@ -1,5 +1,6 @@
 export const FormSchema = {
   $id: 'Form',
+  title: 'Form',
   type: 'object',
   properties: {
     id: {

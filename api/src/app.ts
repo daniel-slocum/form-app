@@ -15,16 +15,16 @@ function build(opts = {}) {
   const app = fastify(opts)
 
   app.register(swagger, {
-    swagger: {
+    openapi: {
       info: {
-        title: 'API Documentation',
-        description: 'API documentation for the Form App',
+        title: 'Form App API Documentation',
         version: '1.0.0',
       },
-      host: 'localhost:8080',
-      schemes: ['http'],
-      consumes: ['application/json'],
-      produces: ['application/json'],
+    },
+    refResolver: {
+      buildLocalReference(json, baseUri, fragment, i) {
+        return typeof json.$id === 'string' ? json.$id : `def-${i}`
+      },
     },
   })
 

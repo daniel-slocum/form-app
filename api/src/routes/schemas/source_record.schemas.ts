@@ -1,5 +1,6 @@
 export const SourceDataSchema = {
   $id: 'SourceData',
+  title: 'SourceData',
   type: 'object',
   properties: {
     id: {
@@ -27,6 +28,7 @@ export const SourceDataSchema = {
 
 export const SourceRecordSchema = {
   $id: 'SourceRecord',
+  title: 'SourceRecord',
   type: 'object',
   properties: {
     id: {

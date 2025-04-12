@@ -5,6 +5,7 @@ import { Form } from '@prisma/client'
 import { ApiError, StatusCodes } from '../errors'
 import { serializer } from './middleware/pre_serializer'
 import { IEntityId } from './schemas/common'
+import { CreateFormSchema, GetFormSchema } from './schemas/form.schemas'
 import { ICreateFormRequest } from './schemas/form.types'
 import { FormService } from '../services/form.service'
 
@@ -28,6 +29,7 @@ async function formRoutes(app: FastifyInstance) {
     Params: IEntityId
     Reply: Form
   }>('/:id', {
+    schema: GetFormSchema,
     async handler(req, reply) {
       const { params } = req
       const { id } = params
@@ -54,6 +56,7 @@ async function formRoutes(app: FastifyInstance) {
     Body: ICreateFormRequest
     Reply: Form
   }>('/', {
+    schema: CreateFormSchema,
     async handler(req, reply) {
       const { body } = req
       const { name, fields } = body

@@ -5,6 +5,10 @@ import { SourceRecord } from '@prisma/client'
 import { ApiError, StatusCodes } from '../errors'
 import { serializer } from './middleware/pre_serializer'
 import { IEntityId } from './schemas/common'
+import {
+  CreateSourceRecordSchema,
+  GetSourceRecordSchema,
+} from './schemas/source_record.schemas'
 import { ICreateSourceRecordRequest } from './schemas/source_record.types'
 import { SourceRecordService } from '../services/source_record.service'
 
@@ -28,6 +32,7 @@ async function sourceRecordRoutes(app: FastifyInstance) {
     Params: IEntityId
     Reply: SourceRecord
   }>('/:id', {
+    schema: GetSourceRecordSchema,
     async handler(req, reply) {
       const { params } = req
       const { id } = params
@@ -57,6 +62,7 @@ async function sourceRecordRoutes(app: FastifyInstance) {
     Body: ICreateSourceRecordRequest
     Reply: SourceRecord
   }>('/', {
+    schema: CreateSourceRecordSchema,
     async handler(req, reply) {
       const { body } = req
       const { formId, sourceData } = body

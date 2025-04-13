@@ -1,0 +1,41 @@
+.form-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: auto;
+  max-width: 700px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field-item mat-card {
+  padding: 1rem;
+}
+
+.field-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.save-button {
+  margin-top: 2rem;
+}
+
+.spinner {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+mat-card-title {
+  margin-bottom: 0.75rem;
+}

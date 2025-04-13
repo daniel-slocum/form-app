@@ -1,0 +1,86 @@
+<h2>Form Builder</h2>
+
+<form [formGroup]="form" class="form-builder">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Form Name</mat-label>
+    <input matInput formControlName="name" />
+    <mat-error *ngIf="form.get('name')?.hasError('required')">
+      Form name is required
+    </mat-error>
+  </mat-form-field>
+
+  <div formArrayName="fields" class="field-list">
+    <div
+      *ngFor="let field of fields.controls; let i = index"
+      [formGroupName]="i"
+      class="field-item"
+    >
+      <mat-card>
+        <mat-card-title>Field {{ i + 1 }}</mat-card-title>
+        <mat-card-content class="field-content">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Field Type</mat-label>
+            <mat-select formControlName="type">
+              <mat-option
+                *ngFor="let type of fieldTypes"
+                [value]="type.value"
+                >{{ type.label }}</mat-option
+              >
+            </mat-select>
+            <mat-error *ngIf="field.get('type')?.hasError('required')">
+              Field type is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Question</mat-label>
+            <input matInput formControlName="question" />
+            <mat-error *ngIf="field.get('question')?.hasError('required')">
+              Question is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="required">Is Required</mat-checkbox>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            *ngIf="fields.length > 1"
+            mat-button
+            color="warn"
+            (click)="onRemoveField(i)"
+          >
+            Remove
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <button
+    mat-button
+    color="accent"
+    (click)="onAddField()"
+    [disabled]="!fields.at(fields.length - 1).valid || isSaving"
+  >
+    + Add Field
+  </button>
+
+  <div class="save-button">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="onSubmit()"
+      [disabled]="form.invalid || isSaving"
+    >
+      <mat-progress-spinner
+        *ngIf="isSaving"
+        mode="indeterminate"
+        diameter="20"
+        strokeWidth="3"
+        class="spinner"
+      ></mat-progress-spinner>
+      <span *ngIf="isSaving">Saving...</span>
+      <span *ngIf="!isSaving">Save Form</span>
+    </button>
+  </div>
+</form>

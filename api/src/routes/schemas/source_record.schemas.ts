@@ -22,7 +22,7 @@ export const SourceDataSchema = {
       description: 'The ID of the source record this data entry belongs to.',
     },
   },
-  required: ['id', 'question', 'answer', 'sourceRecordId'],
+  required: ['question', 'answer'],
   description: 'Represents a single source data entry.',
 }
 
@@ -48,7 +48,7 @@ export const SourceRecordSchema = {
         'An array of source data entries associated with this record.',
     },
   },
-  required: ['id', 'formId', 'sourceData'],
+  required: ['formId', 'sourceData'],
   description:
     'Represents a source record containing multiple source data entries.',
 }

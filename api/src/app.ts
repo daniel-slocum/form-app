@@ -17,7 +17,7 @@ function build(opts = {}) {
   app.register(swagger, {
     openapi: {
       info: {
-        title: 'Form App API Documentation',
+        title: 'Form App',
         version: '1.0.0',
       },
     },

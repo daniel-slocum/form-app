@@ -45,7 +45,7 @@ export interface SourceData {
    * The unique identifier of the source data entry.
    * @format uuid
    */
-  id: string
+  id?: string
   /** The question associated with this source data entry. */
   question: string
   /** The answer associated with this source data entry. */
@@ -54,7 +54,7 @@ export interface SourceData {
    * The ID of the source record this data entry belongs to.
    * @format uuid
    */
-  sourceRecordId: string
+  sourceRecordId?: string
 }
 
 /**
@@ -66,7 +66,7 @@ export interface SourceRecord {
    * The unique identifier of the source record.
    * @format uuid
    */
-  id: string
+  id?: string
   /**
    * The ID of the form associated with this source record.
    * @format uuid
@@ -287,7 +287,7 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title Form App
+ * @title Form App API Documentation
  * @version 1.0.0
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {

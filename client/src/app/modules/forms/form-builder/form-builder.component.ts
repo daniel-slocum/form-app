@@ -12,8 +12,9 @@ import { ApiService } from '../../../shared/services/api.service';
 export class FormBuilderComponent {
   fieldTypes: ISelectOption[] = [
     { label: 'Checkbox', value: 'boolean' },
+    { label: 'Date Picker', value: 'datetime' },
     { label: 'Number', value: 'number' },
-    { label: 'Textarea', value: 'textarea' },
+    { label: 'Text Area', value: 'textarea' },
     { label: 'Textbox', value: 'text' },
   ];
   form: FormGroup;

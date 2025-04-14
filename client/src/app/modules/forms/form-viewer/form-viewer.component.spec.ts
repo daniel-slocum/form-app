@@ -48,7 +48,10 @@ describe('FormViewerComponent', () => {
           .createSpy('sourceRecordsDetail')
           .and.returnValue(
             Promise.resolve({
-              data: { formId: 'test-form-id', sourceData: [] },
+              data: {
+                formId: '00000000-0000-0000-0000-000000000000',
+                sourceData: [],
+              },
             })
           ),
       },
